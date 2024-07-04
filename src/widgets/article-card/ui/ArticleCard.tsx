@@ -16,7 +16,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ title, subtitle, text,
       </div>
       <div className="bg-[#f3f5f8] rounded-[30px] py-[20px] px-[20px] lg:px-[30px] mt-[10px]">
         <p className="font-medium text-[16px] leading-[18px]">{subtitle}</p>
-        <p className="font-normal text-[14px] mt-[10px] leading-[17px]">{text}</p>
+        <p className="font-normal text-[14px lg:text-[16px] mt-[10px] leading-[17px]">{text}</p>
       </div>
       <Link replace={true} className="self-start inline-block mt-[20px] bg-black font-normal text-[14px] lg:text-[16px] text-white py-[12px] lg:py-[20px] xl:py-[24px] px-[50px] rounded-[61px] hover:opacity-90 transition-all" to={path}>Читать Подробнее</Link>
     </article>

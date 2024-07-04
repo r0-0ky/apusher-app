@@ -3,6 +3,13 @@ export interface NavButtonsListTypes {
   path: string;
 }
 
+export interface NavBurgerButtonsListTypes {
+  value: string;
+  path: string;
+  image: string;
+  isClearImage?: boolean;
+}
+
 export interface navSelectsListTypes {
   value: string;
   path: string;

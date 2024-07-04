@@ -3,11 +3,13 @@ import { CategoryButton } from "../../../shared/ui/category-button";
 import { categoriesTypes } from "./types";
 import { SearchInput } from "../../../shared/ui/search-input";
 import { QuestionCard } from "../../../widgets/question-card";
-import profileIcon from "../../../shared/images/for-icon-button/account_circle_24dp_FILL0_wght400_GRAD0_opsz24 (2) 1.svg";
-import walletIcon from "../../../shared/images/for-icon-button/account_balance_wallet_24dp_FILL0_wght400_GRAD0_opsz24 (2) 1.svg";
-import orderIcon from "../../../shared/images/for-icon-button/list_alt_24dp_FILL0_wght400_GRAD0_opsz24 1.svg";
+import profileIcon from "../../../app/assets/icons/account_circle.svg";
+import walletIcon from "../../../app/assets/icons/wallet.svg";
+import orderIcon from "../../../app/assets/icons/list_alt.svg";
 import { ArticleCard } from "../../../widgets/article-card";
 import { useCardsRender } from "../../../shared/hooks/UseCardsRender";
+import { IconCircleButton } from "../../../shared/ui/icon-circle-button";
+import searcIcon from "../../../app/assets/icons/search.svg";
 
 export const KnowledgesPage: React.FC = () => {
   const [categories] = React.useState<categoriesTypes[]>(
@@ -127,21 +129,26 @@ export const KnowledgesPage: React.FC = () => {
 
   const {CardsCount} = useCardsRender()
 
+  const [isInput, setIsInput] = React.useState(false)
+
   return (
     <main>
       <h1 className="text-[16px] mt-[15px] lg:mt-[24px] font-semibold text-center lg:text-[20px] xl:hidden">База знаний</h1>
-      <p className="text-[16px] leading-[18px] px-[15px] lg:leading-[23px] text-center mx-auto xl:text-left lg:text-[20px] xl:text-2xl lg:max-w-[640px] max-w-[820px] mt-[9px] xl:mt-[20px]">Найдите ответы на интересующие вас вопросы с помощью наших статей или воспользуйтесь поиском по разделу</p>
-      <div className="mt-[60px] xl:mt-[40px] flex-col sm:flex-row flex items-center justify-between">
-        <div className="flex mb-[20px] sm:mb-0 xl:mb-0 px-[15px] xl:px-0 overflow-auto sm:overflow-visible w-full items-center gap-[5px]">
+      <p className="text-[16px] leading-[18px] px-[15px] xl:px-0 lg:leading-[23px] text-center mx-auto xl:mx-0 xl:text-left lg:text-[20px] xl:text-2xl max-w-[640px] lg:max-w-[820px] mt-[9px] xl:mt-[15px]">Найдите ответы на интересующие вас вопросы с помощью наших статей или воспользуйтесь поиском по разделу</p>
+      <div className="mt-[60px] relative sm:px-[15px] lg:px-0 xl:mt-[30px] flex-col sm:flex-row flex sm:justify-end xl:justify-between items-center justify-between">
+        <div className={` ${isInput ? 'sm:w-0' : 'sm:w-auto'} sm:overflow-hidden transition-all flex mb-[20px] sm:mb-0 xl:mb-0 px-[15px] sm:px-0 overflow-auto xl:overflow-visible w-full items-center gap-[5px]`}>
           {categories.map((category, index) => <CategoryButton selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} key={index} value={category.value} id={category.id} />)}
         </div>
-        <div className="px-[15px] sm:px-0 w-full">
+        <div className={`px-[15px] ${isInput ? 'sm:w-full' : 'sm:w-0'} xl:block overflow-hidden transition-all sm:px-0 xl:w-[370px] w-full`}>
           <SearchInput />
         </div>
+        <div className="hidden ml-[60px] sm:block xl:hidden">
+          <IconCircleButton image={searcIcon} handleClick={() => setIsInput(!isInput)} />
+        </div>
       </div>
-      <section className="bg-[#f7f9fb] mt-[10px] rounded-[30px] p-[15px]">
+      <section className="bg-[#f7f9fb] sm:mt-[20px] mt-[10px] rounded-[30px] p-[15px]">
         <p className="font-medium text-[18px] mt-[10px] leading-[18px] lg:text-2xl lg:mt-[14px]">Часто задаваемые и актуальные вопросы для Исполнителей</p>
-        <div className="mt-[20px] gap-[7px] lg:gap-[20px] flex flex-col">
+        <div className="mt-[20px] xl:mt-[15px] gap-[7px] lg:gap-[20px] flex flex-col">
           {questions.map((question, index) => <QuestionCard buttonPath={question.buttonPath} buttonValue={question.buttonValue} buttonImage={question.buttonImage} path={question.path} text={question.text} title={index + 1 + '. ' + question.title} key={index} />)}
         </div>
       </section>
