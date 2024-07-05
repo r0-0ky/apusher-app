@@ -1,4 +1,4 @@
-export interface IconCircleButtonProps {
+export interface IconCircleLinkProps {
   image: string
   path: string
 }

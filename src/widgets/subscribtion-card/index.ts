@@ -1,0 +1,1 @@
+export { SubscribtionCard } from "./ui/SubscribtionCard";

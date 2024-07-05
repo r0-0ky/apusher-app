@@ -6,6 +6,7 @@ import {
 import { Layout } from '../layout';
 import { KnowledgesPage } from '../../pages/knowledges-page';
 import { ArticlePage } from '../../pages/article-page';
+import { SubscriptionsPage } from '../../pages/subscriptions-page';
 
 
 const BubbleError = () => {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: 'knowledge/:id',
         element: <ArticlePage />,
+        errorElement: <BubbleError />,
+      },
+      {
+        path: 'subscriptions',
+        element: <SubscriptionsPage />,
         errorElement: <BubbleError />,
       },
       {

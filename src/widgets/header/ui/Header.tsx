@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({ isMenuHidden, isNotificationsHid
 
   return (
     <>
-      <header className="flex px-[15px] pb-[10px] pt-[6px] lg:px-0 lg:py-[15px] bg-[#F7F9FB] lg:bg-inherit border-b-2 border-[#ECEEF1] lg:border-none xl:pt-[35px] xl:pb-[28px] justify-between items-center">
+      <header className="flex px-[15px] pb-[8px] pt-[8px] lg:px-0 lg:pb-[15px] lg:pt-[13px] bg-[#F7F9FB] lg:bg-inherit border-b-2 border-[#ECEEF1] lg:border-none xl:pt-[32px] xl:pb-[28px] justify-between items-center">
         <div className="flex items-center gap-[5px] lg:gap-[20px] xl:gap-[30px]">
           <div className="xl:hidden">
             <BurgerButton handleClick={handleToggleMenu} />
@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ isMenuHidden, isNotificationsHid
           </nav>
         </div>
         <div className="flex items-center gap-[5px]">
-          <div>
+          <div className="hidden lg:block">
             <IconCircleLink image={addCircle} path="/#" />
           </div>
           <BalanceButton value='30.25' />

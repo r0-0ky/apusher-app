@@ -133,28 +133,28 @@ export const KnowledgesPage: React.FC = () => {
 
   return (
     <main>
-      <h1 className="text-[16px] mt-[15px] lg:mt-[24px] font-semibold text-center lg:text-[20px] xl:hidden">База знаний</h1>
-      <p className="text-[16px] leading-[18px] px-[15px] xl:px-0 lg:leading-[23px] text-center mx-auto xl:mx-0 xl:text-left lg:text-[20px] xl:text-2xl max-w-[640px] lg:max-w-[820px] mt-[9px] xl:mt-[15px]">Найдите ответы на интересующие вас вопросы с помощью наших статей или воспользуйтесь поиском по разделу</p>
-      <div className="mt-[60px] relative sm:px-[15px] lg:px-0 xl:mt-[30px] flex-col sm:flex-row flex sm:justify-end xl:justify-between items-center justify-between">
-        <div className={` ${isInput ? 'sm:w-0' : 'sm:w-auto'} sm:overflow-hidden transition-all flex mb-[20px] sm:mb-0 xl:mb-0 px-[15px] sm:px-0 overflow-auto xl:overflow-visible w-full items-center gap-[5px]`}>
+      <h1 className="text-[16px] mt-[18px] lg:mt-[24px] font-semibold text-center lg:text-[20px] xl:hidden">База знаний</h1>
+      <p className="text-[16px] leading-[18px] px-[15px] xl:px-0 lg:leading-[23px] text-center mx-auto xl:mx-0 xl:text-left lg:text-[20px] xl:text-2xl max-w-[640px] xl:max-w-[820px] mt-[8px] xl:mt-[15px]">Найдите ответы на интересующие вас вопросы с помощью наших статей или воспользуйтесь поиском по разделу</p>
+      <div className="mt-[62px] relative sm:px-[15px] lg:px-0 xl:mt-[35px] flex-col md:flex-row flex md:justify-end xl:justify-between items-center justify-between">
+        <div className={` ${isInput ? 'sm:w-0' : 'sm:w-auto'} sm:overflow-hidden transition-all flex mb-[20px] md:mb-0 xl:mb-0 px-[15px] sm:px-0 overflow-auto xl:overflow-visible w-full items-center gap-[5px]`}>
           {categories.map((category, index) => <CategoryButton selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} key={index} value={category.value} id={category.id} />)}
         </div>
-        <div className={`px-[15px] ${isInput ? 'sm:w-full' : 'sm:w-0'} xl:block overflow-hidden transition-all sm:px-0 xl:w-[370px] w-full`}>
+        <div className={`px-[15px] ${isInput ? 'md:w-full' : 'md:w-0'} xl:block overflow-hidden transition-all sm:px-0 xl:w-[370px] w-full`}>
           <SearchInput />
         </div>
-        <div className="hidden ml-[60px] sm:block xl:hidden">
+        <div className="hidden ml-[60px] md:block xl:hidden">
           <IconCircleButton image={searcIcon} handleClick={() => setIsInput(!isInput)} />
         </div>
       </div>
-      <section className="bg-[#f7f9fb] sm:mt-[20px] mt-[10px] rounded-[30px] p-[15px]">
-        <p className="font-medium text-[18px] mt-[10px] leading-[18px] lg:text-2xl lg:mt-[14px]">Часто задаваемые и актуальные вопросы для Исполнителей</p>
-        <div className="mt-[20px] xl:mt-[15px] gap-[7px] lg:gap-[20px] flex flex-col">
+      <section className="bg-[#f7f9fb] sm:mt-[17px] mt-[10px] rounded-[30px] p-[15px]">
+        <p className="font-medium text-[18px] mt-[6px] leading-[21px] lg:leading-[18px] lg:text-2xl lg:mt-[14px]">Часто задаваемые и актуальные вопросы для Исполнителей</p>
+        <div className="mt-[20px] lg:mt-[17px] xl:mt-[18px] gap-[13px] lg:gap-[20px] flex flex-col">
           {questions.map((question, index) => <QuestionCard buttonPath={question.buttonPath} buttonValue={question.buttonValue} buttonImage={question.buttonImage} path={question.path} text={question.text} title={index + 1 + '. ' + question.title} key={index} />)}
         </div>
       </section>
       <section className="mt-[43px] mb-[20px] lg:mt-[35px] lg:mb-[49px] flex flex-col items-center">
         <p className="font-semibold text-[16px] lg:text-[20px] xl:text-2xl text-center">Статьи для Исполнителей</p>
-        <div className="grid xl:grid-cols-2 mt-[10px] lg:mt-[15px] xl:mt-[20px] gap-[10px]">
+        <div className="grid xl:grid-cols-2 mt-[10px] lg:mt-[15px] xl:mt-[20px] gap-[10px] xl:gap-[20px]">
           {articles.slice(0, CardsCount).map((article, index) => <ArticleCard key={index} {...article} />)}
         </div>
         <button className="font-normal hover:border-[#ECEEF1] hover:text-[#006DF0] border-[1px] border-[#006cf000] transition-all text-[14px] lg:text-[16px] text-center py-[14px] xlg:py-[24px] px-[25px] rounded-[61px] bg-[#f7f9fb] mt-[10px] text-[gray]">Загрузить ещё</button>
