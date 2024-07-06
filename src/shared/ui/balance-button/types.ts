@@ -1,3 +1,3 @@
 export interface BalanceButtonProps {
-  value: string
+  value: number
 }

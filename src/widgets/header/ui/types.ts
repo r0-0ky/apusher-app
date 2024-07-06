@@ -1,26 +1,23 @@
-export interface HeaderProps {
-  navBurgerList: {
-    value: string;
-    path: string;
-    image: string;
-    isClearImage?: boolean
-  }[]
-  navButtonsList: {
-    value: string;
-    path: string;
-  }[]
-  navSelectsList: {
-    value: string;
-    path: string;
-  }[][]
-  notifications: {
-    id: number
-    title: string
-    text: string
-    image: JSX.Element
-  }[]
-  isMenuHidden: boolean
-  setIsMenuHidden: React.Dispatch<React.SetStateAction<boolean>>
-  isNotificationsHidden: boolean
-  setIsNotificationsHidden: React.Dispatch<React.SetStateAction<boolean>>
+export interface UserTypes {
+  balance: number
+  avatar: string
+}
+
+export interface NavButtonsListTypes {
+  value: string;
+  path: string;
+}
+
+export interface NavBurgerButtonsListTypes {
+  value: string;
+  path: string;
+  image: string;
+  isClearImage?: boolean;
+}
+
+export interface navSelectsListTypes {
+  value: string;
+  path: string;
+  image?: string;
+  selected?: boolean;
 }

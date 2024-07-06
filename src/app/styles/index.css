@@ -6,4 +6,5 @@
 body, html, #root {
   background: #EFF2F7;
   font-family: 'Sf-pro', sans-serif;
+  height: 100%;
 }

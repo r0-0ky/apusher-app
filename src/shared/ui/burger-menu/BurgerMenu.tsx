@@ -1,15 +1,37 @@
 import { Link } from "react-router-dom"
 import { BurgerNavButton } from "../burger-nav-button"
 import { BurgerMenuProps } from "./types"
+import React from "react"
 
 export const BurgerMenu: React.FC<BurgerMenuProps> = ({ navBurgerList, setIsHidden, isHidden }) => {
   const handleClick = () => {
     setIsHidden(true)
   }
   
+  React.useEffect(() => {
+    const close = (e: KeyboardEvent) => {
+      if(e.key === 'Escape') {
+        setIsHidden(true)
+      }
+    }
+    window.addEventListener('keydown', close)
+    return () => window.removeEventListener('keydown', close)
+  }, [])
+
+
+  React.useEffect(() => {
+    if (!isHidden) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isHidden])
+
+
+  
   return (
-    <section onClick={handleClick} className={`absolute ${isHidden ? 'hidden' : 'block'} stop-0 left-0 z-50 w-full bg-[#00000080] h-screen`}>
-      <div onClick={e => e.stopPropagation()} className={`relative px-[15px] py-[20px] lg:px-[45px] lg:py-[35px] flex flex-col w-3/4 sm:w-1/2 h-screen overflow-hidden bg-[#EFF2F7]`}>
+    <section onClick={handleClick} className={`fixed ${isHidden ? 'opacity-0 invisible' : 'opacity-100 visible'} transition-all ease-in-out stop-0 left-0 z-50 right-0 bottom-0 bg-[#00000080] h-screen`}>
+      <div onClick={e => e.stopPropagation()} className={`${isHidden ? 'translate-x-[-100%]' : 'translate-x-[0%]'} transition-all ease-in-out relative px-[15px] py-[20px] lg:px-[45px] lg:py-[35px] flex flex-col w-3/4 sm:w-1/2 h-screen overflow-hidden bg-[#EFF2F7]`}>
         <div className="flex justify-between items-center">
           <Link to={'/'} className="text-2xl font-semibold">Apusher</Link>
           <button onClick={handleClick} className="w-[14px] h-[14px] hover:opacity-70 transition-all inline-block bg-close bg-center bg-no-repeat"></button>

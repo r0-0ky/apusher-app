@@ -1,7 +1,9 @@
 export interface SocialButtonProps {
-  selectedCategory: number
-  setSelectedCategory: React.Dispatch<React.SetStateAction<number>>
+  selectedCategoryId: number
+  setSelectedCategoryId: React.Dispatch<React.SetStateAction<number>>
   value: string
   image: string
   id: number
+  disableImage: boolean
+  isConnected: boolean
 }

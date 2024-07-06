@@ -7,6 +7,10 @@ import { Layout } from '../layout';
 import { KnowledgesPage } from '../../pages/knowledges-page';
 import { ArticlePage } from '../../pages/article-page';
 import { SubscriptionsPage } from '../../pages/subscriptions-page';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import avatarIcon from '../assets/images/avatar.png';
+import React from 'react';
+import { NotFoundPage } from '../../pages/not-found-page';
 
 
 const BubbleError = () => {
@@ -38,16 +42,29 @@ const router = createBrowserRouter([
       },
       {
         path: '*', 
-        element: <BubbleError />,
+        element: <NotFoundPage />,
+      },
+      {
+        path: '', 
+        element: <NotFoundPage />,
       }
     ]
   },
   {
     path: '*', 
-    element: <BubbleError />,
+    element: <NotFoundPage />,
   }
 ]);
 
 export const BrowserRouter = () => {
-  return <RouterProvider router={router} />;
+  const [currentUser] = React.useState({
+    balance: 30.25,
+    avatar: avatarIcon,
+  })
+  
+  return (
+    <CurrentUserContext.Provider value={currentUser}>
+      <RouterProvider router={router} />
+    </CurrentUserContext.Provider>
+  )
 }
